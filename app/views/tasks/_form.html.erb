@@ -1,0 +1,56 @@
+<%= bootstrap_form_for(@task) do |form| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+        <% task.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group row">
+    <div class="col-sm-6">
+      <%= form.text_field :issue, hide_label: true,
+          placeholder: "What is the issue ?" %>
+    </div>
+    <div class="col-sm-6">
+      <%# form.text_field :category, hide_label: true,
+          placeholder: "Group name" %>
+      <%= form.select :category, [["Your choice!", nil],["Public", 0], ["Private", 1]],
+        hide_label: true, class: "selectpicker"
+      %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-6">
+      <%= form.text_field :ref, hide_label: true,
+          placeholder: "Reference URL" %>
+    </div>
+    <div class="col-sm-6">
+      <%= form.text_field :tags, hide_label: true,
+          placeholder: "Tags" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-12">
+      <%= form.text_field :solution, hide_label: true,
+          placeholder: "Your solution please..." %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-12">
+      <%= form.rich_text_area :content, hide_label: true,
+          placeholder: "Describe howto..." %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-outline-info' %>
+  </div>
+<% end %>

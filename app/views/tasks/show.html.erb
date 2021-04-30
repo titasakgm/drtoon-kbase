@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Issue:</strong>
+  <%= @task.issue %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @task.category %>
+</p>
+
+<p>
+  <strong>Ref:</strong>
+  <%= @task.ref %>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <%= @task.tags %>
+</p>
+
+<p>
+  <strong>Solution:</strong>
+  <%= @task.solution %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @task.content %>
+</p>
+
+<%= link_to 'Edit', edit_task_path(@task), class: 'btn btn-outline-warning' %>
+<%= link_to 'Back', tasks_path, class: 'btn btn-outline-secondary' %>

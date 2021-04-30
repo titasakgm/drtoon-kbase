@@ -1,0 +1,14 @@
+@import "bootstrap/dist/css/bootstrap";
+@import "rails_bootstrap_forms";
+
+trix-editor {
+  &.form-control {
+    min-height: 10rem;
+    height: auto;
+  }
+}
+
+.attachment--preview--test {
+  width: 25% !important;
+  height: auto !important;
+}
