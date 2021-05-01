@@ -1,16 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Tasks</h1>
+<div class="row kb_row">
+  <div class="col col-md-6">
+    <p id="kb_header">KBASE by drtoon</p>
+  </div>
+  <div class="col col-md-6">
+    <%= form_tag tasks_path, id: "frm_search", :method => 'get' do %>
+      <%= text_field_tag :search, params[:search], id: "searchbox", placeholder: "Search issue?" %>
 
-<table>
-  <thead>
+      <%= button_tag(type: "submit", class: "btn btn-sm btn-primary btn_search") do %>
+        <!-- img src="/assets/search-icon.png"/-->
+        <!-- i class="fa fa-search"></i-->
+        <%= fa_icon "search" %>
+      <% end %>
+
+    <% end %>
+  </div>
+</div>
+
+<%= paginate @tasks %>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
     <tr>
       <th>Issue</th>
       <th>Category</th>
-      <th>Ref</th>
+      <th>Reference</th>
       <th>Tags</th>
-      <th>Solution</th>
-      <th>Content</th>
       <th></th>
     </tr>
   </thead>
@@ -18,18 +34,18 @@
   <tbody>
     <% @tasks.each do |task| %>
       <tr>
-        <td><%= task.issue %></td>
+        <td><%= task.issue  %></td>
         <td><%= task.category %></td>
-        <td><%= task.ref %></td>
+        <td><%= link_to "Link", task.ref, class: "btn btn-sm btn-outline-info",
+                target: "_blank" %>
+        </td>
         <td><%= task.tags %></td>
-        <td><%= task.solution %></td>
-        <td><%= truncate(task.content.to_plain_text, length: 20) %></td>
         <td>
           <%= link_to 'Show', task, class: 'btn btn-sm btn-outline-primary' %>
           <%= link_to 'Edit', edit_task_path(task), class: 'btn btn-sm btn-outline-warning' %>
           <%= link_to 'Destroy', task, method: :delete, 
             data: { confirm: 'Are you sure?' },
-            class: 'btn btn-sm btn-danger'
+            class: 'btn btn-sm btn-danger btn_del'
            %>
         </td>
       </tr>
@@ -37,6 +53,8 @@
   </tbody>
 </table>
 
+<%= paginate @tasks %>
+
 <br>
 
-<%= link_to 'New Task', new_task_path, class: 'btn btn-success' %>
+<%= link_to 'New Issue', new_task_path, class: 'btn btn-success' %>

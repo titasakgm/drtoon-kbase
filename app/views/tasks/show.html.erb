@@ -1,34 +1,44 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Issue:</strong>
-  <%= @task.issue %>
-</p>
+<table class="table table-bordered">
+  <tr class="table-primary">
+    <th class="table-default"><strong>Issue</strong></th>
+    <td class="table-primary"><%= @task.issue %></td>
+  </tr>
 
-<p>
-  <strong>Category:</strong>
-  <%= @task.category %>
-</p>
+  <tr class="table-success">
+    <th class="table-default"><strong>Category:</strong></th>
+    <td class="table-success"><%= @task.category %></td>
+  </tr>
 
-<p>
-  <strong>Ref:</strong>
-  <%= @task.ref %>
-</p>
+  <% if @task.ref.length > 0 and @task.ref =~ /^http/ %>
+    <tr class="table-warning">
+      <th class="table-default"><strong>Ref:</strong></th>
+      <td class="table-warning"><%= link_to @task.ref, @task.ref, target: "_blank" %></td>
+    </tr>
+  <% end %>
 
-<p>
-  <strong>Tags:</strong>
-  <%= @task.tags %>
-</p>
+  <tr class="table-secondary">
+    <th class="table-default"><strong>Tags:</strong></th>
+    <td class="table-secindary"><%= @task.tags %></td>
+  </tr>
 
-<p>
-  <strong>Solution:</strong>
-  <%= @task.solution %>
-</p>
+  <tr class="table-danger">
+    <th class="table-default"><strong>Solution:</strong></th>
+    <td class="table-danger"><%= @task.solution %></td>
+  </tr>
 
-<p>
-  <strong>Content:</strong>
-  <%= @task.content %>
-</p>
+  <% if @task.content.to_plain_text.strip.length > 0 %>
+    <tr class="table-light">
+      <th class="table-default"><strong>Content:</strong></th>
+      <td class="table-light"><%= @task.content %></td>
+    </tr>
+  <% end %>
 
-<%= link_to 'Edit', edit_task_path(@task), class: 'btn btn-outline-warning' %>
-<%= link_to 'Back', tasks_path, class: 'btn btn-outline-secondary' %>
+  <tr class="table-dark">
+    <th colspan="2" class="table-default">
+      <%= link_to 'Edit', edit_task_path(@task), class: 'btn btn-outline-warning' %>
+      <%= link_to 'Back', tasks_path, class: 'btn btn-outline-secondary' %>
+    </th>
+  </tr>
+</table>

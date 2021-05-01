@@ -1,5 +1,6 @@
 @import "bootstrap/dist/css/bootstrap";
 @import "rails_bootstrap_forms";
+@import "font-awesome";
 
 trix-editor {
   &.form-control {
@@ -12,3 +13,44 @@ trix-editor {
   width: 25% !important;
   height: auto !important;
 }
+
+#kb_header {
+  color: #1E8449;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.right {
+  text-align: right;
+}
+
+.kb_row {
+  width: 100%;
+}
+
+#frm_search {
+  float: right !important;
+}
+
+#searchbox, #kb_header {
+  margin-top: 10px;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: #C7EAE5;
+}
+
+.table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th {
+   background-color: #80CDC1;
+}
+
+.btn_search img{
+  width: 24px;
+  height: 24px;
+  padding: 0;
+}
+
+.btn_del {
+  display: none;
+}
+

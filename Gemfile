@@ -59,3 +59,6 @@ gem 'bootstrap_form'
 
 gem 'image_processing'
 gem 'mini_magick'
+
+gem 'kaminari'
+gem 'font-awesome-rails'

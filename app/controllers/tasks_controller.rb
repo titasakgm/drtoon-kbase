@@ -3,7 +3,10 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = Task.all
+    if params[:search]
+      redirect_to "/search/#{params[:search]}"
+    end
+    @tasks = Task.page(params[:page])
   end
 
   # GET /tasks/1 or /tasks/1.json
@@ -60,6 +63,8 @@ class TasksController < ApplicationController
     if params[:q]
       q = params[:q]
       @tasks = Task.where(["LOWER(issue||ref||tags||solution) LIKE ?", "%#{q.downcase}%"])
+      @tasks = @tasks.page(params[:page])
+      render "index"
     end
   end
 

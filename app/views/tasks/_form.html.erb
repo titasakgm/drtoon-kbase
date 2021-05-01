@@ -17,11 +17,8 @@
           placeholder: "What is the issue ?" %>
     </div>
     <div class="col-sm-6">
-      <%# form.text_field :category, hide_label: true,
+      <%= form.text_field :category, hide_label: true,
           placeholder: "Group name" %>
-      <%= form.select :category, [["Your choice!", nil],["Public", 0], ["Private", 1]],
-        hide_label: true, class: "selectpicker"
-      %>
     </div>
   </div>
 
