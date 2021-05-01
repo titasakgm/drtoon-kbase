@@ -62,7 +62,7 @@ class TasksController < ApplicationController
   def search
     if params[:q]
       q = params[:q]
-      @tasks = Task.where(["LOWER(issue||ref||tags||solution) LIKE ?", "%#{q.downcase}%"])
+      @tasks = Task.where(["LOWER(issue||category||ref||tags||solution) LIKE ?", "%#{q.downcase}%"])
       @tasks = @tasks.page(params[:page])
       render "index"
     end
