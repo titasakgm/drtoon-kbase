@@ -54,3 +54,40 @@ trix-editor {
   display: none;
 }
 
+.navbar-custom {
+    background-color: #FDAE61;
+}
+
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: rgba(255,255,255,.8);
+}
+
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: rgba(255,255,255,.5);
+}
+
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: #ffffff;
+}
+
+i.fa-user {
+  font-size: 24px;
+  color: green;
+}
+
+p.user_info {
+  color: brown;
+  padding-right: 20px;
+  padding-top: 15px;
+}
+
+#kb_logo {
+  width:48px;
+  height: 48px;
+}
+

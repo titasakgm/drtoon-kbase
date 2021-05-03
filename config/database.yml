@@ -11,11 +11,6 @@ development:
   host: localhost
   port: 5432
 
-  #username: ehzfrimlgkrxmo
-  #password: 52afaab0d8d99df47350f50c06030f3d45e8216ba7bdb870c603b7fe4a516d83
-  #host: ec2-35-174-35-242.compute-1.amazonaws.com
-  #database: dat9l8v1ccc1eb
-
 test:
   <<: *default
   database: kbase_test

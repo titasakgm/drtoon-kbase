@@ -62,3 +62,6 @@ gem 'mini_magick'
 
 gem 'kaminari'
 gem 'font-awesome-rails'
+
+gem 'devise'
+gem 'devise-bootstrap-views'

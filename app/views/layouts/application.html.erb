@@ -12,6 +12,32 @@
 
   <body>
     <div class="container-fluid">
+
+      <nav class="navbar navbar-light navbar-expand-md" style="background: linear-gradient(black, var(--blue) 0%, rgb(60,60,60) 0%, var(--success) 0%, white 100%);height: 50px;color: var(--success);">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#" style="color: var(--success);font-size: 1.5em;">
+            <img src="/assets/kbase-logo.png" id="kb_logo"/>
+          </a>
+          <nav class="navbar navbar-light navbar-expand-md">
+            <div class="container-fluid">
+              <div class="collapse navbar-collapse show" id="navcol-1">
+                <% if user_signed_in? %>
+                  <p class="user_info">Logged in as <strong><%= current_user.email %></strong></p>
+                  <div role="group" class="btn-group">
+                    <%= link_to edit_user_registration_path, class: "btn btn-sm btn-warning" do %>
+                      <i class="fa fa-edit"></i>
+                    <% end %>
+                    <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-sm btn-danger" do %>
+                      <i class="fa fa-sign-out"></i>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </nav>
+
       <%= yield %>
     </div>
   </body>
