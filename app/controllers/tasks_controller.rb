@@ -72,7 +72,7 @@ class TasksController < ApplicationController
       @tasks = @tasks.page(params[:page])
       ids1 = @tasks.to_a.map(&:id)
 
-      @tasks_rich = Task.joins(:action_text_rich_text).where("action_text_rich_texts.body LIKE ?", "%#{q.downcase}%")
+      @tasks_rich = Task.joins(:action_text_rich_text).where("LOWER(action_text_rich_texts.body) LIKE ?", "%#{q.downcase}%")
       ids2 = @tasks_rich.map(&:id)
 
       ids = ids1+ids2
