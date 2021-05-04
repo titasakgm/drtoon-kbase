@@ -8,7 +8,8 @@ class TasksController < ApplicationController
   # GET /tasks or /tasks.json
   def index
     if params[:search]
-      redirect_to "/search/#{params[:search]}"
+      q = params[:search].tr('.','')
+      redirect_to "/search/#{q}"
     end
     @tasks = Task.page(params[:page])
   end
@@ -66,8 +67,18 @@ class TasksController < ApplicationController
   def search
     if params[:q]
       q = params[:q]
+      res = []
       @tasks = Task.where(["LOWER(issue||category||ref||tags||solution) LIKE ?", "%#{q.downcase}%"])
       @tasks = @tasks.page(params[:page])
+      ids1 = @tasks.to_a.map(&:id)
+
+      @tasks_rich = Task.joins(:action_text_rich_text).where("action_text_rich_texts.body LIKE ?", "%#{q.downcase}%")
+      ids2 = @tasks_rich.map(&:id)
+
+      ids = ids1+ids2
+
+      @tasks = Task.where(["id IN (?)", ids.uniq]).page(params[:page])
+
       render "index"
     end
   end
@@ -82,4 +93,5 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:issue, :category, :ref, :tags, :solution, :content)
     end
+
 end
