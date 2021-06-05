@@ -20,7 +20,7 @@
 
 <%= paginate @tasks %>
 
-<table class="table table-striped">
+<table id="drtoon_kbase" class="table table-striped">
   <thead class="thead-dark">
     <tr>
       <th>Issue</th>
@@ -42,11 +42,13 @@
         <td><%= task.tags %></td>
         <td>
           <%= link_to 'Show', task, class: 'btn btn-sm btn-outline-primary' %>
-          <%= link_to 'Edit', edit_task_path(task), class: 'btn btn-sm btn-outline-warning' %>
-          <%= link_to 'Destroy', task, method: :delete, 
-            data: { confirm: 'Are you sure?' },
-            class: 'btn btn-sm btn-danger btn_del'
-           %>
+          <% if current_user.email == 'titasak@gmail.com' %>
+            <%= link_to 'Edit', edit_task_path(task), class: 'btn btn-sm btn-outline-warning' %>
+            <%= link_to 'Destroy', task, method: :delete, 
+              data: { confirm: 'Are you sure?' },
+              class: 'btn btn-sm btn-danger btn_del'
+             %>
+          <% end %>
         </td>
       </tr>
     <% end %>
@@ -58,3 +60,13 @@
 <br>
 
 <%= link_to 'New Issue', new_task_path, class: 'btn btn-success' %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#drtoon_kbase').DataTable({
+      "lengthChange": false,
+      "bFilter": false
+    });
+  });
+</script>
+

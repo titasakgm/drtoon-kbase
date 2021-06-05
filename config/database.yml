@@ -6,8 +6,8 @@ default: &default
 development:
   <<: *default
   database: kbase
-  username: admin
-  password: admin
+  username: postgres
+  password: postgres
   host: localhost
   port: 5432
 
